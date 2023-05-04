@@ -1,7 +1,6 @@
 {
   "name": "@eten-lab/sso",
   "version": "0.1.0",
-  "private": false,
   "description": "keycloak authentication and authorization",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
