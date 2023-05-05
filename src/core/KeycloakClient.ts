@@ -60,12 +60,12 @@ export class KeycloakClient {
         },
       )
       .then((response) => {
-        console.log('response in lib');
-        console.log(response);
-        return response.data.access_token;
-      })
+        return response.data;
+      }).catch((error: any) => {
+        throw Error(error);
+      }) 
     } catch (error: any) {
-      return error.message;
+       throw Error(error);
     }
   }
 
@@ -87,13 +87,13 @@ export class KeycloakClient {
           },
         )
         .then(async (response) => {
-          return response.data.access_token;
+          return response.data;
         })
         .catch((error) => {
-          return error.response.data.error_description;
+          throw Error(error);
         });
     } catch (error: any) {
-      return error.message;
+      throw Error(error);
     }
   }
 
@@ -124,9 +124,11 @@ export class KeycloakClient {
         )
         .then((resp) => {
           return resp;
+        }).catch((error: any) => {
+          throw Error(error);
         });
     } catch (error: any) {
-      return error;
+      throw Error(error);
     }
   }
 
