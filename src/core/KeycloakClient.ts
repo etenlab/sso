@@ -90,10 +90,10 @@ export class KeycloakClient {
           return response.data;
         })
         .catch((error) => {
-          return Error(error);
+          return error;
         });
     } catch (error: any) {
-      return Error(error);
+      return error;
     }
   }
 
