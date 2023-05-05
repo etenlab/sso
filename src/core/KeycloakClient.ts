@@ -62,10 +62,10 @@ export class KeycloakClient {
       .then((response) => {
         return response.data;
       }).catch((error: any) => {
-        throw Error(error);
+        return error;
       }) 
     } catch (error: any) {
-       throw Error(error);
+      return error;
     }
   }
 
@@ -125,10 +125,10 @@ export class KeycloakClient {
         .then((resp) => {
           return resp;
         }).catch((error: any) => {
-          throw Error(error);
+          return error;
         });
     } catch (error: any) {
-      throw Error(error);
+      return error;
     }
   }
 
