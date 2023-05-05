@@ -99,8 +99,8 @@ export class KeycloakClient {
 
   async register(user: RegisterData){
     try {
-      const accessToken = await this.getToken();
-      await axios
+      return await this.getToken().then(async (token) => {
+        return await axios
         .post(
           `${this.uri}/admin/realms/${this.realm}/users`,
           {
@@ -118,7 +118,7 @@ export class KeycloakClient {
           {
             headers: {
               'Content-Type': 'application/json',
-              Authorization: `Bearer ${accessToken}`,
+              'Authorization': `Bearer ${token.access_token}`,
             },
           },
         )
@@ -127,6 +127,8 @@ export class KeycloakClient {
         }).catch((error: any) => {
           return error;
         });
+      });
+      
     } catch (error: any) {
       return error;
     }
