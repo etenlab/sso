@@ -41,6 +41,7 @@ jobs:
           echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
           cat .npmrc
       - run: npm install
+      - run: npm run build
       - run: npm publish --access=public
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
