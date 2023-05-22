@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { KeycloakClient } from '../../core';
+import { Roarr } from 'roarr';
 // import { canUseSymbol } from '../../utilities';
 // import type { RenderPromises } from '../ssr';
-
+import { name as pname } from "../../../package.json"
+const logger = Roarr.child({package: pname})
 export interface KeycloakContextValue {
   client?: KeycloakClient;
   // renderPromises?: RenderPromises;
@@ -18,9 +20,9 @@ export interface KeycloakContextValue {
 
 export function getKeycloakContext(): React.Context<KeycloakContextValue> {
   let context = (React.createContext as any)['__KEYCLOAK_CONTEXT__'] as React.Context<KeycloakContextValue>;
-  console.log('into context');
+  logger.info('into context');
   if (!context) {
-    console.log('in context');
+    logger.info('in context');
     Object.defineProperty(React.createContext, '__KEYCLOAK_CONTEXT__', {
       value: context = React.createContext<KeycloakContextValue>({}),
       enumerable: false,

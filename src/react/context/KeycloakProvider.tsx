@@ -4,6 +4,10 @@ import * as React from 'react';
 
 import { KeycloakClient } from '../../core';
 import { getKeycloakContext } from './KeycloakContext';
+import { name as pname } from "../../../package.json"
+import { Roarr } from 'roarr';
+const logger = Roarr.child({package: pname})
+
 
 export interface KeycloakProviderProps {
   client: KeycloakClient;
@@ -14,11 +18,11 @@ export const KeycloakProvider: React.FC<KeycloakProviderProps> = ({
   client,
   children
 }) => {
-  console.log('Keycloakclient');
-  console.log(client);
+  logger.info('Keycloakclient');
+  logger.info(JSON.stringify(client));
   const KeycloakContext = getKeycloakContext();
-  console.log('KeycloakContext');
-  console.log(KeycloakContext);
+  logger.info('KeycloakContext');
+  logger.info(JSON.stringify(KeycloakContext));
   return (
     <KeycloakContext.Consumer>
       {(context: any = {}) => {
