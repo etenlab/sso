@@ -18,9 +18,7 @@ export interface KeycloakContextValue {
 
 export function getKeycloakContext(): React.Context<KeycloakContextValue> {
   let context = (React.createContext as any)['__KEYCLOAK_CONTEXT__'] as React.Context<KeycloakContextValue>;
-  console.log('into context');
   if (!context) {
-    console.log('in context');
     Object.defineProperty(React.createContext, '__KEYCLOAK_CONTEXT__', {
       value: context = React.createContext<KeycloakContextValue>({}),
       enumerable: false,

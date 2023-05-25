@@ -7,8 +7,6 @@ export function useKeycloakClient(
   override?: KeycloakClient,
 ): KeycloakClient {
   const testcontext = getKeycloakContext();
-  console.log('testcontext');
-  console.log(testcontext);
   const context = useContext(testcontext);
   const client = override || context.client;
   // invariant(

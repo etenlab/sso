@@ -14,11 +14,7 @@ export const KeycloakProvider: React.FC<KeycloakProviderProps> = ({
   client,
   children
 }) => {
-  console.log('Keycloakclient');
-  console.log(client);
   const KeycloakContext = getKeycloakContext();
-  console.log('KeycloakContext');
-  console.log(KeycloakContext);
   return (
     <KeycloakContext.Consumer>
       {(context: any = {}) => {
