@@ -47,7 +47,7 @@ export class KeycloakClient {
   async getToken() {
     try {
       return await axios.post(
-        `${this.uri}/realms/master/protocol/openid-connect/token`,
+        `${this.uri}/realms/${this.realm}/protocol/openid-connect/token`,
         querystring.stringify({
           client_id: 'admin-cli',
           client_secret: this.clientSecret,
